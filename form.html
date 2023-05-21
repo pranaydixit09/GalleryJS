@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+</head>
+<body>
+    <form>
+        
+
+            
+             <div>
+                <label for="name">Name</label><br>
+                <input type="text" name="name" placeholder="Enter your name" id="name"><br>
+            </div>
+            <br>
+            <div>
+                <label for="email"> Email</label><br>
+                <input type="text" name="email" placeholder="Enter Your Email" id="email"><br>
+
+            </div>
+            <br>
+
+            <div>
+                <label for="username"> Username</label><br>
+                <input type="text" name="username" placeholder="Enter Your Username" id="username"><br>
+
+            </div>
+            <br>
+            
+            
+            
+            <div>
+                <input type="submit" value="Register">
+
+            </div>
+        
+
+        
+    </form>
+
+    <script>
+        let form=document.querySelector('form');
+        
+        form.addEventListener("submit", validateForm)
+
+
+
+        let signupData=[]
+        function validateForm(e){
+            e.preventDefault()
+            let name=document.querySelector("#name");
+            let email=document.querySelector("#email");
+            let userName=document.querySelector("#username");
+
+        
+            let user={
+                    name: name.value,
+                    email: email.value,
+                    userName: userName.value
+                
+            }
+
+        signupData.push(user)
+        
+
+        // Add values to local storage
+        let data=JSON.stringify(signupData) // Array to json
+
+        localStorage.setItem("signup", data)
+
+
+        console.log(signupData)
+        alert("You have successfully signed up");
+        
+        
+        //Redirect button to Main page
+
+        window.location.href= "./index.html";
+
+        }
+    </script>
+</body>
+</html>

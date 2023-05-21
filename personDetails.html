@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Details</title>
+
+</head>
+<body>
+    
+
+    
+    <label for="">Person Details: <span id="localstorage_value"></span></label>
+    <br>
+    <button type="button" id="read_localstorage">Read Person Details</button>
+
+        
+    
+    
+    <script>
+       let read_localstorage=document.getElementById("read_localstorage")
+       let localstorage_value= document.getElementById("localstorage_value")
+       
+       read_localstorage.onclick=function(){
+
+        localstorage_value.textContent=localStorage.getItem("signup")
+       }
+        
+
+    </script>
+</body>
+</html>

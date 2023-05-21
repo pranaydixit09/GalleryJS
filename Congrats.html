@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coupon Code</title>
+</head>
+<body>
+    
+    <h1 class="Coupon1">Congratulation for successfully generating coupon code</h1>
+    <button class="clickToCoupon">Click Here to See Coupon code</button>
+    <span id="stringValue"></span>
+    <script>
+            let clickToCoupon=document.querySelector(".clickToCoupon")
+            let stringValue=document.querySelector("#stringValue")
+            clickToCoupon.addEventListener("click",showCoupon)
+
+            function showCoupon(){
+                stringValue.textContent = localStorage.getItem('myString')
+                
+                console.log(stringValue)
+            }
+    </script>
+</body>
+</html>

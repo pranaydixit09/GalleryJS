@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+<body>
+    <h1 class="gallery">Gallery</h1>
+    <div class="images">
+    <a href="./form.html"><img src="./Images/img1.jpg" alt=""></a>
+    <a href="./personDetails.html"><img src="./Images/img2.jpg" class="img2"></a>
+    <img src="./Images/img3.jpg"  class="image3">
+    <img src="./Images/img4.jpg"  class="image4" >
+    </div>
+
+    <div>
+        <h1 class="output"></h1>
+    </div>
+    <script>
+           
+            let diceImage=document.querySelector(".image3")
+            let score=0;
+            let numClicks = 0;
+            let clicks=0;
+            let image4=document.querySelector(".image4")
+
+            image4.addEventListener("click",generateCoupon)
+            image4.removeEventListener("click",generateCoupon)
+
+                diceImage.addEventListener('click', x)
+
+                function x(){
+                const value = Math.floor(Math.random() * 6) + 1; // generate a random number between 1 and 6
+                //this.src = `dice${value}.png`; // update the dice image
+                score += value; // add the value to the score
+                numClicks++; // increment the number of clicks
+                if (numClicks === 3) { // check if three clicks have been made
+                if (score > 10) {
+                alert('Score is greater than 10. Now you can Click on Next image');
+                diceImage.removeEventListener('click', x)
+                image4.addEventListener("click",generateCoupon)
+                } else {
+                alert('Score is less than or equal to 10. Try again after scoring more than 10');
+                clicks++;
+                    if(clicks==2)
+                    {
+                        alert("Bad Luck. You are not allowed to click anymore");
+                        image4.removeEventListener("click",generateCoupon)
+                        diceImage.removeEventListener('click', x)
+                        //Dont give him access to click on fourth image
+                    }
+                }
+
+    // reset the score and number of clicks
+                score = 0;
+                numClicks = 0;
+  }
+}
+
+
+            
+
+          //  image4.addEventListener("click",generateCoupon)
+
+            function generateCoupon() {
+            let coupon = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            
+            const couponLength = 12;
+            
+            for (let i = 0; i < couponLength; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                coupon += characters.charAt(randomIndex);
+            }
+            console.log(coupon)
+            localStorage.setItem("myString",coupon)
+            window.location.href= "./Congrats.html";
+               
+
+            //return coupon;
+            }
+
+            
+
+        
+
+    </script>
+</body>
+</html>
